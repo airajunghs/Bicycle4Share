@@ -1,0 +1,126 @@
+html,
+body {
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+.wraper {
+    height: 100%;
+    overflow: hidden;
+}
+.main {
+    margin-left: 178px;
+    min-height: 100%;
+    background: white;
+}
+
+.sidebar {
+    background-color: #80b3ff;
+    overflow-x: hidden;
+    padding-top: 16px;
+    width: 178px;
+    float: left;
+    min-height: 100%;
+}
+
+.sidebar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    display: block;
+}
+
+.sidebar a:hover,
+.w3-button:hover {
+    color: #f1f1f1;
+}
+
+.main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+    .sidebar a {
+        font-size: 18px;
+    }
+}
+
+.navbar-custom {
+    background-color: #80b3ff;
+    border-style: solid;
+}
+
+.active {
+    font-family: Abhaya Libre ExtraBold;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 57px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.username {
+    font-family: Abhaya Libre ExtraBold;
+    text-decoration: none;
+}
+
+.btn {
+    border: none;
+    font-size: 20px;
+    width: 8%;
+    display: inline-block;
+    padding: 8px 16px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    text-align: left;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}
+
+.title {
+    width: 100%;
+    height: 56px;
+    flex-shrink: 0;
+    color: #000;
+    font-family: Abhaya Libre ExtraBold;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    padding-top: 5%;
+}
+
+.totalCandidate {
+    border-radius: 20px;
+    background: #D9D9D9;
+    width: 286px;
+    height: 149px;
+    flex-shrink: 0;
+    text-align: left;
+    padding-left: 20px;
+    
+}
+
+.tutorial {
+    display: inline-block;
+    height: 20px;
+    padding: 40px 60px;
+}
+
+#container{
+    padding-top: 10%;
+    float: right;
+}
