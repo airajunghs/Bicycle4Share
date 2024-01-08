@@ -19,11 +19,11 @@ class PenaltiesController extends Controller
 
         $penalties = null;
 
-        if(Auth::user()->type == 'admin'){
+        if (Auth::user()->type == 'admin') {
             $penalties = Penalties::with('complaints')->get();
             $complaints = Complaints::all();
-        }else{
-            $penalties = Penalties::where('StudentID',Auth::user()->idnumber)->with('complaints')->get();
+        } else {
+            $penalties = Penalties::where('StudentID', Auth::user()->idnumber)->with('complaints')->get();
         }
 
         return view(
@@ -43,9 +43,9 @@ class PenaltiesController extends Controller
         );
     }
 
-    function add(Request $request,$id)
+    function add(Request $request, $id)
     {
-        $complaint = Complaints::where('id',$id)->firstOrFail();
+        $complaint = Complaints::where('id', $id)->firstOrFail();
         $maxPenalty = Penalties::max('id');
         $newPenaltyNumber = $maxPenalty + 1;
         $numDigitsPenalty = strlen((string)$newPenaltyNumber);
@@ -66,9 +66,9 @@ class PenaltiesController extends Controller
 
         $bicycle = Bicycle::where('bicycleID', $complaint->bicycleID)->first();
 
-        if($bicycle){
+        if ($bicycle) {
             $student = User::where('idnumber', $bicycle->matricid)->first();
-            if($student){
+            if ($student) {
                 $maxNotify = Notification::max('id');
                 $newNotifyNumber = $maxNotify + 1;
                 $numDigitsNotify = strlen((string)$newNotifyNumber);
@@ -101,18 +101,43 @@ class PenaltiesController extends Controller
     }
 
     public function search()
-{
-    $search_text = $_GET['query'];
+    {
+        $search_text = $_GET['query'];
 
-    $penalties = Penalties::where('PenaltyID', 'LIKE', '%' . $search_text . '%')
-        ->orWhereHas('complaints', function ($query) use ($search_text) {
-            $query->where('bicycleID', 'LIKE', '%' . $search_text . '%');
-        })
-        ->orWhere('studentID', 'LIKE', '%' . $search_text . '%')
-        ->get();
+        // Get the currently logged-in user's idnumber
+        $currentUser = auth()->user();
+        $currentUserID = $currentUser->idnumber;
 
-    return view('ManagePenalty.ViewPenalty', compact('penalties'));
-}
+        if ($currentUser->type == "student") {
+            // Query penalties table with a filter on the studentID matching the current user's idnumber
+            $penalties = Penalties::where('studentID', 'LIKE', '%' . $currentUserID . '%')
+                ->where(function ($query) use ($search_text) {
+                    $query->orWhere('PenaltyID', 'LIKE', '%' . $search_text . '%')
+                        ->orWhereHas('complaints', function ($innerQuery) use ($search_text) {
+                            $innerQuery->where('bicycleID', 'LIKE', '%' . $search_text . '%');
+                        })
+                        ->orWhere('currentDate', 'LIKE', '%' . $search_text . '%')
+                        ->orWhere('ComplaintID', 'LIKE', '%' . $search_text . '%')
+                        ->orWhere('PenaltyStatus', 'LIKE', '%' . $search_text . '%')
+                        ->orWhere('PenaltyDescription', 'LIKE', '%' . $search_text . '%')
+                        ->orWhere('studentID', 'LIKE', '%' . $search_text . '%');
+                })
+                ->get();
+        } else {
+            // Query all penalties if no search text is provided
+            $penalties = Penalties::where('studentID', 'LIKE', '%' . $search_text . '%')
+                ->orWhere('PenaltyID', 'LIKE', '%' . $search_text . '%')
+                ->orWhereHas('complaints', function ($query) use ($search_text) {
+                    $query->where('bicycleID', 'LIKE', '%' . $search_text . '%');
+                })
+                ->orWhere('currentDate', 'LIKE', '%' . $search_text . '%')
+                ->orWhere('ComplaintID', 'LIKE', '%' . $search_text . '%')
+                ->orWhere('PenaltyStatus', 'LIKE', '%' . $search_text . '%')
+                ->orWhere('PenaltyDescription', 'LIKE', '%' . $search_text . '%')
+                ->orWhere('studentID', 'LIKE', '%' . $search_text . '%')
+                ->get();
+        }
 
-
+        return view('ManagePenalty.ViewPenalty', compact('penalties'));
+    }
 }

@@ -79,7 +79,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
+                        </div><br>
                     </div>
                     <div class="col">
                         <div class="userinfo2">

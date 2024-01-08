@@ -28,7 +28,7 @@
                 <table class="table">
                     <tr>
                         <th colspan="3" class="text-right">
-                            <select style="background-color:rgba(138, 164, 255, 0.39)" id="selectChart"
+                            <select style="background-color:rgba(84, 121, 255, 0.88); color: white;" id="selectChart"
                                 onchange="selectOnChange()">
                                 @if (Request::get('type') == 'yearly')
                                     <option value="yearly" selected>Yearly</option>

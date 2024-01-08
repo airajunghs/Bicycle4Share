@@ -15,10 +15,10 @@ class ManageComplaintController extends Controller
     function index()
     {
         //complaints sama dengan nama database migration complaints, kacau database dan model, need to migrate
-        if(Auth::user()->type == 'admin'){
+        if (Auth::user()->type == 'admin') {
             $complaints = Complaints::all();
-        }else{
-            $complaints = Complaints::where('StudentID',Auth::user()->idnumber)->get();
+        } else {
+            $complaints = Complaints::where('StudentID', Auth::user()->idnumber)->get();
         }
 
 
@@ -63,16 +63,16 @@ class ManageComplaintController extends Controller
 
         $userId = Auth::user()->id;
 
-        $bicycle = Bicycle::where('bicycleID',$request->input('bicycleID'))->first();
-        if($bicycle){
+        $bicycle = Bicycle::where('bicycleID', $request->input('bicycleID'))->first();
+        if ($bicycle) {
             $student = User::where('idnumber', $bicycle->matricid)->first();
-            if($student){
-               // Create a new complaint with the generated complaint ID
+            if ($student) {
+                // Create a new complaint with the generated complaint ID
                 Complaints::create([
                     //'PenaltyID' => $newPenaltyID,
                     'StudentID' => $student->idnumber,
                     'userID' => $userId,
-                    'bicycleID'=> $request->input('bicycleID'),
+                    'bicycleID' => $request->input('bicycleID'),
                     'complaintID' => $newComplaintID,
                     'currentDate' => $request->input('currentDate'),
                     'currentTime' => $request->input('currentTime'),
@@ -80,12 +80,12 @@ class ManageComplaintController extends Controller
                     'complaint' => $request->input('complaint'),
                     'status' => "Processing",
                 ]);
-            }else{
+            } else {
                 Complaints::create([
                     //'PenaltyID' => $newPenaltyID,
                     'StudentID' => null,
                     'userID' => $userId,
-                    'bicycleID'=> $bicycle->bicycleID,
+                    'bicycleID' => $bicycle->bicycleID,
                     'complaintID' => $newComplaintID,
                     'currentDate' => $request->input('currentDate'),
                     'currentTime' => $request->input('currentTime'),
@@ -107,7 +107,7 @@ class ManageComplaintController extends Controller
 
         return view(
             'ManageComplaint.EditComplaint',
-            compact('complaints', ),
+            compact('complaints',),
         );
     }
 
@@ -141,7 +141,7 @@ class ManageComplaintController extends Controller
         $complaints->update([
             'PenaltyID' => $newPenaltyID,
             'userID' => $userId,
-            'bicycleID'=> $complaints->bicycleID,
+            'bicycleID' => $complaints->bicycleID,
             'complaintID' => $newComplaintID,
             'currentDate' => $complaints->currentDate,
             'currentTime' => $complaints->currentTime,
@@ -158,14 +158,34 @@ class ManageComplaintController extends Controller
     {
         $search_text = $_GET['query'];
 
-        // : Bicycle::with('bicycleID')->get();
-        // Query all bicycles if no search text is provided
-        $complaints = $search_text = Complaints::where('bicycleID', 'LIKE', '%'.$search_text.'%')
-                        ->orWhere('complaint', 'LIKE', '%' . $search_text . '%')
-                        ->orWhere('studentID', 'LIKE', '%' . $search_text . '%')
+        // Get the currently logged-in user's idnumber
+        $currentUser = auth()->user();
+        $currentUserID = $currentUser->idnumber;
+
+        if ($currentUser->type == "student") {
+            // Query complaints table with a filter on the studentID matching the current user's idnumber
+            $complaints = Complaints::where('studentID', 'LIKE', '%' . $currentUserID . '%')
+                ->where(function ($query) use ($search_text) {
+                    $query->orWhere('complaint', 'LIKE', '%' . $search_text . '%')
+                        ->orWhere('bicycleID', 'LIKE', '%' . $search_text . '%')
                         ->orWhere('currentTime', 'LIKE', '%' . $search_text . '%')
                         ->orWhere('currentDate', 'LIKE', '%' . $search_text . '%')
-                        ->get();
+                        ->orWhere('PenaltyID', 'LIKE', '%' . $search_text . '%')
+                        ->orWhere('complaintID', 'LIKE', '%' . $search_text . '%');
+                })
+                ->get();
+        } else {
+            // : Bicycle::with('bicycleID')->get();
+            // Query all bicycles if no search text is provided
+            $complaints = $search_text = Complaints::where('studentID', 'LIKE', '%' . $search_text . '%')
+                ->orWhere('complaint', 'LIKE', '%' . $search_text . '%')
+                ->orWhere('bicycleID', 'LIKE', '%' . $search_text . '%')
+                ->orWhere('currentTime', 'LIKE', '%' . $search_text . '%')
+                ->orWhere('currentDate', 'LIKE', '%' . $search_text . '%')
+                ->orWhere('PenaltyID', 'LIKE', '%' . $search_text . '%')
+                ->orWhere('complaintID', 'LIKE', '%' . $search_text . '%')
+                ->get();
+        }
 
         return view('ManageComplaint.ViewComplaintStudent', compact('complaints'));
     }

@@ -72,8 +72,8 @@
                                 <th>DATE</th>
                                 <th>ID</th>
                                 <th>COMPLAINT</th>
-                                <th>Bicycle ID</th>
-                                <th>Student ID</th>
+                                <th>BICYCLE ID</th>
+                                <th>STUDENT</th>
                                 <th>STATUS</th>
                                 <th>REMARKS</th>
                                 {{-- ACTION HANYA MUNCUL UNTUK ADMIN SAHAJA --}}

@@ -65,7 +65,7 @@
                             </div>
                         </form>
                     </div><br>
-                    <div class="table-responsive" style="min-height: 400px; overflow-x: ;">
+                    {{-- <div class="table-responsive" style="min-height: 400px; overflow-x: ;"> --}}
                         <table class="table table-bordered">
                             <thead class="thead-dark">
                                 <tr>
@@ -178,7 +178,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                    </div>
+                    {{-- </div> --}}
                 </div>
                 <br>
 

@@ -166,7 +166,7 @@
 
                                             <tr>
                                                 <th><div>
-                                                    <button type="submit" class="custom-button px-5 py-10" style="margin-left:10%">SAVE</button>
+                                                    <button type="submit" class="custom-button px-5 py-10" style="margin-left:10%; margin-top:15%">SAVE</button>
                                                 </div></th>
                                             </tr>
 
@@ -178,7 +178,7 @@
                                 </div>
 
 
-                            </div>
+                            </div><br>
 
 
                         </div>
