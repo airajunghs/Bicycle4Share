@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            <img src="{{ asset('images/latestlogoB4S.png') }}" alt="Logo" width="650" height="500">
         </x-slot>
 
         <x-validation-errors class="mb-4" />
@@ -9,7 +9,7 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
-            <div>
+            <div class="mt-4">
                 <x-label for="name" value="{{ __('Name') }}" />
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
@@ -20,8 +20,8 @@
             </div>
 
             <div class="mt-4">
-                <x-label for="type" value="{{ __('User Type') }}" />
-                <x-input id="type" class="block mt-1 w-full" type="text" name="type" :value="old('type')" required autocomplete="type" />
+                <x-label for="idnumber" value="{{ __('ID Number') }}" />
+                <x-input id="idnumber" class="block mt-1 w-full" type="text" name="idnumber" :value="old('idnumber')" required autocomplete="idnumber" />
             </div>
 
             <div class="mt-4">

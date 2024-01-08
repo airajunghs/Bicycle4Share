@@ -1,0 +1,180 @@
+.background {
+    border-radius: 10px;
+    background: rgba(138, 164, 255, 0.39);
+    width: 1169px;
+    height: auto;
+    flex-shrink: 0;
+    margin-top: 5%;
+    margin-left: 2%;
+    margin-bottom: 5%;
+}
+
+.userinfo {
+    width: 609px;
+    height: 720px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 1px solid #000;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-left: 2%;
+}
+
+.userinfoblue {
+    width: 609px;
+    height: 720px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 1px solid #000;
+    background: rgba(138, 164, 255, 0.20);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-left: 2%;
+}
+
+.notifinfo {
+    width: 800px;
+    height: 600px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 1px solid #000;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-left: 2%;
+}
+
+.bordernotifinfo {
+    width: 800px;
+    height: 83px;
+    flex-shrink: 0;
+    border-radius: 20px 20px 0px 0px;
+    background: rgba(138, 164, 255, 0.67);
+}
+
+.bikeinfo {
+    width: 800px;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 1px solid #000;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-left: 2%;
+}
+
+.borderbikeinfo {
+    width: 800px;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 20px 20px 0px 0px;
+    background: rgba(138, 164, 255, 0.67);
+}
+
+.borderuserinfo {
+    width: 609px;
+    height: 83px;
+    flex-shrink: 0;
+    border-radius: 20px 20px 0px 0px;
+    background: rgba(138, 164, 255, 0.67);
+}
+
+.userinfo2 {
+    width: 409px;
+    height: 500px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 1px solid #000;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-left: 2%;
+}
+
+.borderuserinfo2 {
+    width: 409px;
+    height: 83px;
+    flex-shrink: 0;
+    border-radius: 20px 20px 0px 0px;
+    background: rgba(138, 164, 255, 0.67);
+}
+
+.backgroundlogin {
+    background: rgba(138, 164, 255, 0.67);
+}
+
+.custom-button {
+    /* Your existing styles */
+    background-color: #3490dc;
+    color: #fff;
+    border: none;
+    /* Additional styles for hover effect */
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-button:hover {
+    background-color: #2779bd;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.backgroundUploadReceipt {
+    background-color: #FFF;
+    width: 100%;
+    height: auto;
+}
+
+/* dekat welcome.blade.php */
+.adminButton {
+    text-align: center;
+    /* Center the button within the container */
+}
+
+.loginButton {
+    border-radius: 20px;
+    background: #8AA4FF;
+    width: 228px;
+    height: 163px;
+    flex-shrink: 0;
+    display: inline-block;
+    /* Ensure the button takes only the necessary width */
+    text-decoration: none;
+    /* Remove underline on anchor tag */
+    color: #ffffff;
+    /* Set text color to white or desired color */
+    font-size: 16px;
+    /* Adjust font size as needed */
+    padding: 10px 20px;
+    /* Adjust padding as needed */
+    border: none;
+    /* Remove default button border */
+    cursor: pointer;
+    /* Add a pointer cursor on hover */
+}
+
+.reportSmallBackground {
+    border-radius: 20px;
+    background: rgba(138, 164, 255, 0.23);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    width: 320px;
+    height: 190px;
+    flex-shrink: 0;
+}
+
+.complaintBackground {
+    border-radius: 20px;
+    background: rgba(138, 164, 255, 0.23);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    width: 700px;
+    height: 400px;
+    flex-shrink: 0;
+    /* margin-right: 100%; */
+}
+
+.inputLatest {
+    width: 80%;
+    padding: 7px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+

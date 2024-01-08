@@ -7,23 +7,33 @@ body {
     margin: 0;
     padding: 0;
 }
+
 .wraper {
     height: 100%;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: auto;
 }
+
 .main {
-    margin-left: 178px;
+    margin-left: 168px;
     min-height: 100%;
+    /* Same as the width of the sidenav */
+    padding: 0px 10px;
     background: white;
 }
 
 .sidebar {
-    background-color: #80b3ff;
+    background-color: rgba(138, 164, 255, 0.39);
+    ;
     overflow-x: hidden;
     padding-top: 16px;
     width: 178px;
     float: left;
     min-height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
 }
 
 .sidebar a {
@@ -32,22 +42,22 @@ body {
     font-size: 20px;
     color: black;
     display: block;
+    font-family: Garamond, serif;
 }
 
 .sidebar a:hover,
 .w3-button:hover {
-    color: #f1f1f1;
+    color: black;
+    background-color: #f2f2f2;
+
 }
 
-.main {
-    margin-left: 160px; /* Same as the width of the sidenav */
-    padding: 0px 10px;
-}
 
 @media screen and (max-height: 450px) {
     .sidebar {
         padding-top: 15px;
     }
+
     .sidebar a {
         font-size: 18px;
     }
@@ -56,6 +66,70 @@ body {
 .navbar-custom {
     background-color: #80b3ff;
     border-style: solid;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+    position: relative;
+    background-color: #77adff;
+    overflow: hidden;
+    font-family: Garamond, serif;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+    background-color: rgba(138, 164, 255, 0.39);
+    ;
+    color: white;
+    text-decoration: none;
+    padding-left: 240px;
+}
+
+/* Centered section inside the top navigation */
+.topnav-centered a {
+    float: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+    float: right;
+}
+
+/* Responsive navigation menu - display links on top of each other instead of next to each other (for mobile devices) */
+@media screen and (max-width: 600px) {
+
+    .topnav a,
+    .topnav-right {
+        float: none;
+        display: block;
+    }
+
+    .topnav-centered a {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
 }
 
 .active {
@@ -75,7 +149,6 @@ body {
 .btn {
     border: none;
     font-size: 20px;
-    width: 8%;
     display: inline-block;
     padding: 8px 16px;
     overflow: hidden;
@@ -103,24 +176,38 @@ body {
     padding-top: 5%;
 }
 
-.totalCandidate {
-    border-radius: 20px;
+.containerImage {
+    border-radius: 20px; /* Adjust the border radius as needed */
     background: #D9D9D9;
     width: 286px;
     height: 149px;
     flex-shrink: 0;
     text-align: left;
     padding-left: 20px;
-    
+    background-size: cover;
+
+    /* New styles for border and shadow */
+    border: 1px solid #ccc; /* Border color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adjust shadow properties as needed */
+}
+
+.containerImage-word{
+    border-radius: 20px; /* Adjust the border radius as needed */
+    width: 286px;
+    height: 149px;
+    flex-shrink: 0;
+    text-align: left;
 }
 
 .tutorial {
     display: inline-block;
     height: 20px;
+    width: 100%;
     padding: 40px 60px;
 }
 
-#container{
-    padding-top: 10%;
+#container {
+    margin-top: 5%;
+    margin-right: 10%;
     float: right;
 }
