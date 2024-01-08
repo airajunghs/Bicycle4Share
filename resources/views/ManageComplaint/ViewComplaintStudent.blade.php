@@ -80,7 +80,6 @@
                                 @if (Auth::user()->type == 'admin')
                                     <th>ACTION</th>
                                 @endif
-
                             </tr>
                         </thead>
                         <tbody>
